@@ -1,9 +1,9 @@
 # Laravel-Hashids
 > Easily integrate Laravel with Hashids with full model support. 
 
-There are lots of packages for integrating Hashids with Laravel, but all of them just provides you with facade and add some syntax sugar.
+There are lots of packages for integrating Hashids with Laravel, but all of them just provide you with facade and add some syntax sugar.
 
-But what about model binding and automatic id resolving? This package gives you all. All you have to do is just to install this package!
+But what about model binding and automatic id resolving? This package gives you all. All you have to do is just to install it!
 
 ## Installation
 
@@ -54,7 +54,7 @@ After the installation, Router's method `model` that binds your placeholders ids
 
 If you will pass hash id to the url it will be easily resolved into an associated model. But how replace ids in your html output? There are two ways. Everything depends on how you form your urls.
 
-If you prefer form them by hands, package gives you the blade helper method `@hashids($id)` that will convert your id to the hash string.
+If you prefer form them by hands, package gives you the Blade helper method `@hashids($id)` that will convert your id to the hash string.
 
 ```html
 <a href="/posts/@hashids($post->id)">{{$post->title}}</a>
@@ -73,7 +73,7 @@ This methods were updated to handle Hashids too. They will automatically replace
 
 ## Configuration
 
-By default package will use your `APP_KEY` as a salt and 4 symbols length for the hash. If you want to overwrite it, publish hashids configs and edit `config/hahshids.php`
+By default package will use your `APP_KEY` as a salt and 5 symbols length for the hash. If you want to overwrite it, publish hashids configs and edit `config/hahshids.php`
 
 ```bash
 $ php artisan vendor:publish

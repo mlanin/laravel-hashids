@@ -32,6 +32,7 @@ class HashidsServiceProvider extends ServiceProvider {
 		$this->registerRouter();
 		$this->registerUrlGenerator();
 		$this->registerHashids();
+		$this->registerConfigs();
 	}
 
 	/**
@@ -100,10 +101,13 @@ class HashidsServiceProvider extends ServiceProvider {
 		};
 	}
 
+	/**
+	 * Register default configs.
+	 */
 	protected function registerConfigs()
 	{
 		$this->mergeConfigFrom(
-			__DIR__.'/config/hashids.php', 'hashids'
+			__DIR__.'/../config/hashids.php', 'hashids'
 		);
 	}
 
