@@ -23,7 +23,7 @@ class UrlGenerator extends \Illuminate\Routing\UrlGenerator
                 // Encode id if model uses hashids
                 if ( ! ($parameter instanceof DoNotUseHashids))
                 {
-                    $id = app('hashids')->encode($id);
+                    $id = Hashids::fromModel($parameter)->encode($id);
                 }
 
                 $parameters[$key] = $id;

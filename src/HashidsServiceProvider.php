@@ -14,9 +14,6 @@ class HashidsServiceProvider extends ServiceProvider {
 			__DIR__.'/../config/hashids.php' => config_path('hashids.php'),
 		]);
 
-		$salt = config('hashids.salt') !== '' ? config('hashids.salt') : env('APP_KEY');
-		$this->app->make('hashids', [$salt, config('hashids.length'),  config('hashids.alphabet')]);
-
 		\Blade::directive('hashids', function($expression) {
 			return "<?php echo app('hashids')->encode($expression); ?>";
 		});
@@ -45,14 +42,6 @@ class HashidsServiceProvider extends ServiceProvider {
 		$this->app['router'] = $this->app->share(function ($app) {
 			return new Router($app['events'], $app);
 		});
-	}
-
-	/**
-	 * Register Hashids.
-	 */
-	protected function registerHashids()
-	{
-		$this->app->singleton('hashids', Hashids::class);
 	}
 
 	/**
@@ -99,6 +88,14 @@ class HashidsServiceProvider extends ServiceProvider {
 		return function ($app, $request) {
 			$app['url']->setRequest($request);
 		};
+	}
+
+	/**
+	 * Register Hashids.
+	 */
+	protected function registerHashids()
+	{
+		$this->app->bind('hashids', Hashids::class);
 	}
 
 	/**
